@@ -83,9 +83,9 @@ class HKVModel:
                 weighted_error_terms += pow(error_terms[i, j], 2) \
                                       * (self.alpha * matrix[i, j] if abs(matrix[i, j]) > 0 else 1)
 
-        # The regularisation terms are the trace of the product of x with its transpose, and similarly for y.
-        # TODO: this is an inefficient way to calculate this term ( O(max(m^3,n^3) ) - improve
-        x_regulariser = np.trace(np.transpose(x) * x)
-        y_regulariser = np.trace(np.transpose(y) * y)
+        # The regularisation terms are the trace of the product of x with its transpose, and similarly for y. It's
+        # more efficient to calculate this as the sum of the element-wise squares though, which is O( d*max(m,n) )
+        x_regulariser = np.sum(np.square(x))
+        y_regulariser = np.sum(np.square(y))
 
         return weighted_error_terms + self.lambda_1 * x_regulariser + self.lambda_2 * y_regulariser

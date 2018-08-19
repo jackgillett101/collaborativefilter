@@ -13,6 +13,7 @@ class MatrixFactorisation:
         (self.X, self.Y) = model.calibrate(matrix)
 
         self.prediction_matrix = self.X * self.Y
+        self.prediction_error = self.model.cost(self.M, self.X, self.Y)
 
         self.print_model_output()
 
@@ -23,7 +24,7 @@ class MatrixFactorisation:
         print(np.around(self.X, decimals=1))
         print(np.around(self.Y, decimals=1))
 
-        print("Calibrated cost function is: %2.0f" % self.model.cost(self.M, self.X, self.Y))
+        print("Calibrated cost function is: %2.0f" % self.prediction_error)
 
         print("The calculated product matrix is:")
         print(np.around(self.prediction_matrix, decimals=1))
@@ -33,3 +34,6 @@ class MatrixFactorisation:
 
     def get_predicted_matrix(self):
         return self.prediction_matrix
+
+    def get_prediction_error(self):
+        return self.prediction_error
