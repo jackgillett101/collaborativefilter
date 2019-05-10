@@ -1,5 +1,5 @@
 import numpy as np
-from hkvmodel import HKVModel
+from collaborativefilter.hkvmodel import HKVModel
 
 
 # This class takes a matrix, and performs a factorisation into two smaller matrices, using a model class specified
