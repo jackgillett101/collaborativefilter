@@ -1,2 +1,2 @@
-from hkvmodel import HKVModel
-from matrixfactorisation import MatrixFactorisation
+from collaborativefilter.hkvmodel import HKVModel
+from collaborativefilter.matrixfactorisation import MatrixFactorisation
